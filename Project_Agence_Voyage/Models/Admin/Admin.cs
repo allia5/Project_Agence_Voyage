@@ -5,10 +5,10 @@
 		public string Username { get; set; }
 		public string password { get; set; }
 
-		public Admin(string Username_, string password_)
+		/*public Admin(string Username_, string password_)
 		{
 			this.Username = Username_;
 			this.password = password_;
-		}
+		}*/
 	}
 }
