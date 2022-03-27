@@ -9,7 +9,7 @@ namespace Project_Agence_Voyage.Models.Client
             if (row is null)
                 return null;
 
-            return new Client((string)row["id_client"], (string)row["username"], (string)row["email"], (string)row["password_"]);
+            return new Client((string)row["id_client"], (string)row["username"], (string)row["email"], (string)row["password_"], (Status)row["Status"]);
           
         }
 

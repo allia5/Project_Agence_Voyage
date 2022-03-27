@@ -6,13 +6,15 @@
 		public string username { get; set; }
 		public string email { get; set; }
 		public string password { get; set; }
+		public Status Status { get; set; }
 
-		public Client(string id_client_, string username_, string email_, string password_)
+		public Client(string id_client_, string username_, string email_, string password_, Status Status_)
 		{
 			this.id_client = id_client_;
 			this.username = username_;
 			this.email = email_;
 			this.password = password_;
+			this.Status = Status_;
 		}
 	}
 }
