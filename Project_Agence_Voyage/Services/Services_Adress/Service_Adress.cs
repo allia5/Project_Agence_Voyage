@@ -26,7 +26,15 @@ namespace Project_Agence_Voyage.Services.Services_Adress
 
         public List<Ville> S_Get_Ville(string id_pays)
         {
-            throw new NotImplementedException();
+            try
+            {
+                return manager_Adress.Get_Ville(id_pays);
+
+            }
+            catch (Exception E)
+            {
+                throw new Exception($"{ E.Message }");
+            }
         }
     }
 }

@@ -4,6 +4,7 @@ using Project_Agence_Voyage.Services.Services_Adress;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+
 builder.Services.AddScoped<IService_Adress, Service_Adress>();
 builder.Services.AddScoped<IManager_Adress, Manager_Adress>();
 
