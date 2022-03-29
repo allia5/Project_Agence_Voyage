@@ -1,12 +1,14 @@
 ﻿namespace Project_Agence_Voyage.Models.Client
 {
-    public class Client
+	using Project_Agence_Voyage.Models.Passanger;
+	public class Client
     {
 		public string id_client { get; set; }
 		public string username { get; set; }
 		public string email { get; set; }
 		public string password { get; set; }
 		public Status Status { get; set; }
+		public List<Passanger> passangers = new List<Passanger>();
 
 		public Client(string id_client_, string username_, string email_, string password_, Status Status_)
 		{

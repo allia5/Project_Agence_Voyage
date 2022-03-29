@@ -1,11 +1,15 @@
-﻿namespace Project_Agence_Voyage.Models.Pays
+﻿
+namespace Project_Agence_Voyage.Models.Pays
 {
-    public class Pays
+	using Project_Agence_Voyage.Models.Ville;
+	public class Pays 
     {
 		
 			public string id_Pays { get; set; }
 			public string code_pays { get; set; }
-			public string nom_pays { get; set; }
+		public string nom_pays { get; set; }
+
+		public List<Ville> villes = new List<Ville>();
 
 			public Pays(string id_Pays_, string code_pays_, string nom_pays_)
 			{
