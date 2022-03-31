@@ -7,7 +7,7 @@
 		public string name_hotel { get; set; }
 		public string adress { get; set; }
 		public int prix { get; set; }
-		public string? imagee { get; set; }
+		public string imagee { get; set; }
 		public int nbr_room { get; set; }
 		public string id_ville { get; set; }
 
