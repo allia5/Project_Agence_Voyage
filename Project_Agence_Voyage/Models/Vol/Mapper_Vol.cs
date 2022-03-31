@@ -10,7 +10,7 @@ namespace Project_Agence_Voyage.Models.Vol
                 if (row is null)
                     return null;
 
-                return new Vol((string)row["id_vol"], (DateTime)row["date_depart"], (DateTime)row["date_arriver"], (int)row["prix"], (TimeSpan)row["durè"], (string)row["type"], (string)row[" id_ville_depart"], (string)row["id_ville_arriver"]);
+                return new Vol((string)row["id_vol"], (DateTime)row["date_depart"], (DateTime)row["date_arriver"], (int)row["prix"], (TimeSpan)row["durè"], (string)row["type"], (string)row["id_ville_depart"], (string)row["id_ville_arriver"]);
             }
 
             public static List<Vol> ToVols(this DataTable table)

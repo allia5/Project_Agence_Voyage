@@ -13,5 +13,12 @@ namespace Project_Agence_Voyage.Services.Services_Client
 
 
         }
+        private void Validation_Recherch_Hotel(string id_ville)
+        {
+            Validate_enry(id_ville);
+           
+
+
+        }
     }
 }

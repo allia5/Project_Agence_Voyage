@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Project_Agence_Voyage.Models.Hotel;
 using Project_Agence_Voyage.Models.Vol;
 using Project_Agence_Voyage.Services.Services_Client;
 
@@ -24,6 +25,23 @@ namespace Project_Agence_Voyage.Controllers
                 return Ok(Vols);
 
             }catch(Exception e)
+            {
+                return BadRequest(e.Message);
+
+            }
+        }
+        [HttpGet("{id_ville}")]
+
+        public IActionResult Recherch_Hotel(string id_ville)
+        {
+            try
+            {
+                List<Hotel> Hotels = new List<Hotel>();
+                Hotels = service_Client.check_recherch_hotel(id_ville);
+                return Ok(Hotels);
+
+            }
+            catch (Exception e)
             {
                 return BadRequest(e.Message);
 
