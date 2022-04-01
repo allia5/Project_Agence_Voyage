@@ -20,5 +20,13 @@ namespace Project_Agence_Voyage.Services.Services_Client
 
 
         }
+        private void Validation_Recherch_Voiture(string id_ville,DateTime pick_up ,DateTime pick_off)
+        {
+            
+
+
+
+        }
+
     }
 }

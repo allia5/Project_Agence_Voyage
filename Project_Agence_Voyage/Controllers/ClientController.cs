@@ -26,6 +26,7 @@ namespace Project_Agence_Voyage.Controllers
 
             }catch(Exception e)
             {
+
                 return BadRequest(e.Message);
 
             }

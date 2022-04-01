@@ -9,7 +9,7 @@ namespace Project_Agence_Voyage.Models.Voiture
             if (row is null)
                 return null;
 
-            return new Voiture((string)row["id_voiture"], (string)row["name"], (int)row["kilometrage"], (int)row["prix"], (string)row["imagee"], (int)row["seates"]);
+            return new Voiture((string)row["id_voiture"], (string)row["name"], (int)row["kilometrage"], (int)row["prix"], (string)row["imagee"], (int)row["seates"],(string)row["id_ville"]);
         }
 
         public static List<Voiture> ToVoitures(this DataTable table)

@@ -1,4 +1,7 @@
 ﻿using Project_Agence_Voyage.Managers.Manager_Client;
+using Project_Agence_Voyage.Managers.Manager_Hotel;
+using Project_Agence_Voyage.Managers.Manager_Voiture;
+using Project_Agence_Voyage.Managers.Manager_Vol;
 using Project_Agence_Voyage.Models.Hotel;
 using Project_Agence_Voyage.Models.Vol;
 
@@ -7,16 +10,22 @@ namespace Project_Agence_Voyage.Services.Services_Client
     public partial class Service_Client : IService_Client
     {
         private readonly IManager_Client OClient;
-        public Service_Client(IManager_Client OClient)
+        private readonly IManager_Vol OVol;
+        private readonly IManager_Hotel OHotel;
+        private readonly IManager_Voiture OVoiture;
+        public Service_Client(IManager_Client OClient, IManager_Voiture OVoiture, IManager_Hotel OHotel, IManager_Vol OVol)
         {
             this.OClient = OClient;
+            this.OVol = OVol;
+            this.OHotel = OHotel;
+            this.OVoiture = OVoiture;
         }
 
         public List<Hotel> check_recherch_hotel(string id_ville)
         {
             
             Validation_Recherch_Hotel( id_ville);
-            return OClient.Select_Hotels(id_ville);
+            return OHotel.Select_Hotels_By_Id(id_ville);
 
         }
 
@@ -24,7 +33,7 @@ namespace Project_Agence_Voyage.Services.Services_Client
         {
             List<Vol> Vols = new List<Vol>();
             Validation_Recherch_Vol(id_ville_origin, id_ville_dist,  Date_Depart, Date_return);
-           Vols= OClient.Select_Vol_Recherch(id_ville_origin, id_ville_dist, Date_Depart, Date_return);
+           Vols= OVol.Select_Vol_Recherch(id_ville_origin, id_ville_dist, Date_Depart, Date_return);
             return Vols;
 
         }
