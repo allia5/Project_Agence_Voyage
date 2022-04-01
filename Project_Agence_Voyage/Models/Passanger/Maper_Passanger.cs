@@ -9,7 +9,7 @@ namespace Project_Agence_Voyage.Models.Passanger
             if (row is null)
                 return null;
 
-            return new Passanger((string)row["id_passanger"], (string)row["nom"], (string)row["prenom"], (string)row["sexe"], (DateTime)row["date_naissance"], (string)row["nationalitè"], (string)row["passport_num"], (string)row["email"], (string)row["id_client"], (string)row["id_resv"]);
+            return new Passanger((string)row["id_passanger"], (string)row["nom"], (string)row["prenom"], (string)row["sexe"], (DateTime)row["date_naissance"], (string)row["nationalitè"], (string)row["passport_num"], (string)row["email"], (string)row["id_client"]);
         }
 
         public static List<Passanger> ToPassangers(this DataTable table)
