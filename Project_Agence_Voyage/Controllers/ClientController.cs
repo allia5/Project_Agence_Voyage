@@ -9,6 +9,7 @@ namespace Project_Agence_Voyage.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    
     public class ClientController : ControllerBase
     {
         private readonly IService_Client service_Client;
