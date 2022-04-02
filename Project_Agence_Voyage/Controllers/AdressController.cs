@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Project_Agence_Voyage.Models.Pays;
 using Project_Agence_Voyage.Models.Ville;
 using Project_Agence_Voyage.Services.Services_Adress;
@@ -17,6 +18,7 @@ namespace Project_Agence_Voyage.Controllers
             this.Service_addr = Service_addr;
         }
         // GET: api/<AdressController>
+        [Authorize]
         [HttpGet]
         public IActionResult GetPays()
         {

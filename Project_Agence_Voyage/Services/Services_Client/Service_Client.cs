@@ -2,6 +2,7 @@
 using Project_Agence_Voyage.Managers.Manager_Hotel;
 using Project_Agence_Voyage.Managers.Manager_Voiture;
 using Project_Agence_Voyage.Managers.Manager_Vol;
+using Project_Agence_Voyage.Models.Client;
 using Project_Agence_Voyage.Models.Hotel;
 using Project_Agence_Voyage.Models.Voiture;
 using Project_Agence_Voyage.Models.Vol;
@@ -30,6 +31,11 @@ namespace Project_Agence_Voyage.Services.Services_Client
 
         }
 
+        public List<Client> get_all_client(string Username, String Password)
+        {
+         return OClient.Get_All(Username,Password);
+        }
+
         public List<Voiture> recherch_Voiture(string id_ville, DateTime pick_up, DateTime pick_off)
         {
             Validation_Recherch_Voiture(id_ville, pick_up, pick_off);
@@ -46,6 +52,7 @@ namespace Project_Agence_Voyage.Services.Services_Client
             return Vols;
 
         }
+        
 
     }
 }

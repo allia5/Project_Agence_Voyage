@@ -10,13 +10,13 @@
 		public Status Status { get; set; }
 		public List<Passanger> passangers = new List<Passanger>();
 
-		public Client(string id_client_, string username_, string email_, string password_, Status Status_)
+		public Client(string id_client_, string username_, string email_, string password_)
 		{
 			this.id_client = id_client_;
 			this.username = username_;
 			this.email = email_;
 			this.password = password_;
-			this.Status = Status_;
+			this.Status = Status.Allowed;
 		}
 	}
 }
