@@ -42,6 +42,7 @@ namespace Project_Agence_Voyage.Controllers
 
             }
         }
+       
         [HttpGet("{id_ville}")]
 
         public IActionResult Recherch_Hotel(string id_ville)
@@ -102,7 +103,7 @@ namespace Project_Agence_Voyage.Controllers
                  
                    
              };
-            var token = new JwtSecurityToken(configuration["Jwt:Issuer"] , configuration["Jwt:Audience"],claim,expires:DateTime.Now.AddMinutes(15),signingCredentials : credential);
+            var token = new JwtSecurityToken(configuration["Jwt:Issuer"] , configuration["Jwt:Audience"],claim,expires:DateTime.Now.AddMinutes(2584),signingCredentials : credential);
             return new JwtSecurityTokenHandler().WriteToken(token);
         }
 

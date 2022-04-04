@@ -18,8 +18,9 @@ namespace Project_Agence_Voyage.Controllers
             this.Service_addr = Service_addr;
         }
         // GET: api/<AdressController>
-        [Authorize]
+        
         [HttpGet]
+        [Authorize]
         public IActionResult GetPays()
         {
             try
