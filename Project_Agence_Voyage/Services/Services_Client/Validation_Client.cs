@@ -1,4 +1,6 @@
-﻿using Project_Agence_Voyage.Models.Vol;
+﻿using Project_Agence_Voyage.Models.Client;
+using Project_Agence_Voyage.Models.Registre_Client;
+using Project_Agence_Voyage.Models.Vol;
 using static Project_Agence_Voyage.Services.Validation.Validation_Model;
 
 namespace Project_Agence_Voyage.Services.Services_Client
@@ -27,6 +29,17 @@ namespace Project_Agence_Voyage.Services.Services_Client
 
             Validate_enry(id_ville);
             Validate_date(pick_up, pick_off);
+
+
+        }
+        private void Validation_Client(Reg_Client client)
+        {
+            Validate_enry(client.username);
+            Validate_enry(client.password);
+            Validate_enry(client.confirme_password);
+            ValidateEmailAdresse(client.email);
+
+
 
 
         }

@@ -7,6 +7,7 @@ namespace Project_Agence_Voyage.Managers.Manager_Client
     public interface IManager_Client
     {
         public List<Client> Get_All(string Username ,String Password);
+       public int Post_client(Client client);
        
     }
 }

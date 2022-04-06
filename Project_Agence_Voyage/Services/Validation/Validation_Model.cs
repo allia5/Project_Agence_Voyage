@@ -1,4 +1,6 @@
-﻿namespace Project_Agence_Voyage.Services.Validation
+﻿using System.Text.RegularExpressions;
+
+namespace Project_Agence_Voyage.Services.Validation
 {
     public static  class Validation_Model
     {
@@ -19,6 +21,24 @@
             if(compare >= 0 )
             {
                 throw new Exception($"probleme in entry date");
+            }
+        }
+        public static void Valid_sym(string pass1 ,string pass2)
+        {
+            if (pass1!=pass2)
+            {
+                throw new Exception($"invalide password");
+            }
+            
+        }
+        public static void ValidateEmailAdresse(string email)
+        {
+            bool isEmail = Regex.IsMatch(email,
+                @"\A(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)\Z",
+                RegexOptions.IgnoreCase);
+            if (!isEmail)
+            {
+                throw new Exception($"email not valid");
             }
         }
 

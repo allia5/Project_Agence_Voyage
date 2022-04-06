@@ -23,5 +23,28 @@ namespace Project_Agence_Voyage.Managers.Manager_Client
             da.Fill(dt);
             return dt.ToClients();
         }
+
+        public int Post_client(Client client)
+        {
+            try
+            {
+                SqlConnection connection = new SqlConnection(cnStr);
+                SqlCommand cmd = new SqlCommand(
+                    "INSERT INTO [dbo].[Client]([id_client],[username],[email],[password],[Status])     VALUES           (@Id,@Nom,@password,@email,@password,@status)", connection);
+                cmd.Parameters.AddWithValue("@Id", client.id_client);
+                cmd.Parameters.AddWithValue("@Nom", client.username);
+                cmd.Parameters.AddWithValue("@password", client.password);
+                cmd.Parameters.AddWithValue("@email", client.email);
+                cmd.Parameters.AddWithValue("@status", client.Status);
+
+                connection.Open();
+                int insertedRows = cmd.ExecuteNonQuery();
+                return insertedRows;
+            }
+            catch (Exception e)
+            {
+                throw;
+            }
+        }
     }
 }

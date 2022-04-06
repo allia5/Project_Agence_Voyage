@@ -20,7 +20,7 @@ namespace Project_Agence_Voyage.Controllers
         // GET: api/<AdressController>
         
         [HttpGet]
-        [Authorize]
+       
         public IActionResult GetPays()
         {
             try

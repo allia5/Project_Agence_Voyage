@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using Project_Agence_Voyage.Models.Client;
 using Project_Agence_Voyage.Models.Hotel;
+using Project_Agence_Voyage.Models.Registre_Client;
 using Project_Agence_Voyage.Models.Voiture;
 using Project_Agence_Voyage.Models.Vol;
 using Project_Agence_Voyage.Services.Services_Client;
@@ -115,5 +116,19 @@ namespace Project_Agence_Voyage.Controllers
            
             return Clients.First();
         }
+        [HttpPost]
+        public  IActionResult post_client(Reg_Client client)
+        {
+            try
+            {
+                service_Client.post_client(client);
+                return Ok(client);
+            }catch(Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+             
+        }
+        
     }
 }
