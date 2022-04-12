@@ -119,15 +119,16 @@ namespace Project_Agence_Voyage.Controllers
         [HttpPost]
         public  IActionResult post_client(Reg_Client client)
         {
-            try
-            {
+             try
+              {
                 service_Client.post_client(client);
-                return Ok(client);
-            }catch(Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
-             
+                  return Ok(client);
+              }catch(Exception ex)
+              {
+                  return BadRequest(ex.Message);
+              }
+            
+
         }
         
     }

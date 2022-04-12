@@ -30,7 +30,7 @@ namespace Project_Agence_Voyage.Managers.Manager_Client
             {
                 SqlConnection connection = new SqlConnection(cnStr);
                 SqlCommand cmd = new SqlCommand(
-                    "INSERT INTO [dbo].[Client]([id_client],[username],[email],[password],[Status])     VALUES           (@Id,@Nom,@password,@email,@password,@status)", connection);
+                    "INSERT INTO [dbo].[Client]([id_client],[username],[email],[password],[Status])     VALUES           (@Id,@Nom,@email,@password,@status)", connection);
                 cmd.Parameters.AddWithValue("@Id", client.id_client);
                 cmd.Parameters.AddWithValue("@Nom", client.username);
                 cmd.Parameters.AddWithValue("@password", client.password);

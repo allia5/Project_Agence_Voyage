@@ -37,6 +37,7 @@ namespace Project_Agence_Voyage.Services.Services_Client
             Validate_enry(client.username);
             Validate_enry(client.password);
             Validate_enry(client.confirme_password);
+            Valid_sym(client.password, client.confirme_password);
             ValidateEmailAdresse(client.email);
 
 

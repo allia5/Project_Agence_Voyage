@@ -6,7 +6,7 @@ namespace Project_Agence_Voyage.Services.Validation
     {
         public static void Validate_enry(string value)
         {
-            if(value is null)
+            if(string.IsNullOrWhiteSpace(value))
             {
                 throw new ArgumentNullException();
             }
@@ -25,7 +25,7 @@ namespace Project_Agence_Voyage.Services.Validation
         }
         public static void Valid_sym(string pass1 ,string pass2)
         {
-            if (pass1!=pass2)
+            if (!String.Equals(pass2,pass1) )
             {
                 throw new Exception($"invalide password");
             }
