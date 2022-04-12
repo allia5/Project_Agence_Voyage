@@ -14,7 +14,7 @@ namespace Project_Agence_Voyage.Managers.Manager_Passanger
             throw new NotImplementedException();
         }
 
-        public int get_pass_by_id(string id)
+        public Passanger get_pass_by_id(string id)
         {
             throw new NotImplementedException();
         }

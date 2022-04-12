@@ -6,7 +6,7 @@ namespace Project_Agence_Voyage.Managers.Manager_Passanger
     {
         public int post_passanger(Passanger passanger);
         public int delete_pass_by_id(string id);
-        public int get_pass_by_id(string id);
+        public Passanger get_pass_by_id(string id);
         public List<Passanger> get_all_passanger();
     }
 }
