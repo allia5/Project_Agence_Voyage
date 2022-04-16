@@ -3,10 +3,12 @@ using Microsoft.IdentityModel.Tokens;
 using Project_Agence_Voyage.Managers.Manager_Adress;
 using Project_Agence_Voyage.Managers.Manager_Client;
 using Project_Agence_Voyage.Managers.Manager_Hotel;
+using Project_Agence_Voyage.Managers.Manager_Passanger;
 using Project_Agence_Voyage.Managers.Manager_Voiture;
 using Project_Agence_Voyage.Managers.Manager_Vol;
 using Project_Agence_Voyage.Services.Services_Adress;
 using Project_Agence_Voyage.Services.Services_Client;
+using Project_Agence_Voyage.Services.Services_Passanger;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -22,6 +24,9 @@ builder.Services.AddScoped<IManager_Client, Manager_Client>();
 builder.Services.AddScoped<IManager_Vol, Manager_Vol>();
 builder.Services.AddScoped<IManager_Voiture, Manager_Voiture>();
 builder.Services.AddScoped<IManager_Hotel, Manager_Hotel>();
+
+builder.Services.AddScoped<IManager_Passanger, Manager_Passanger>();
+builder.Services.AddScoped<IService_Passanger, Service_Passanger>();
 
 
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(option =>
