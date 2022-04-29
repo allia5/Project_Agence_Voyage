@@ -8,7 +8,7 @@ namespace Project_Agence_Voyage.Managers.Manager_Adress
     public class Manager_Adress : IManager_Adress
     {
         private string cnStr = "Data Source=DESKTOP-2Q0OTRL\\HPSERVER;Initial Catalog=Test;Integrated Security=True";
-        public List<Pays> Get_Pays()
+        public List<Pays> SelectPays()
         {
             SqlConnection connection = new SqlConnection(cnStr);
             SqlCommand cmd = new SqlCommand("SELECT TOP (1000) [id_Pays],[code_pays],[nom_pays] FROM[Test].[dbo].[Pays]", connection);
@@ -21,7 +21,7 @@ namespace Project_Agence_Voyage.Managers.Manager_Adress
 
     
 
-        public List<Ville> Get_Ville(string id_Pays)
+        public List<Ville> SelectVille(string id_Pays)
         {
             SqlConnection connection = new SqlConnection(cnStr);
             SqlCommand cmd = new SqlCommand("SELECT TOP (1000) [id_Ville],[nom_Ville],[id_pays] FROM [Test].[dbo].[Ville] where id_pays=@id_Pays", connection);

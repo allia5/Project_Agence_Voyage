@@ -69,7 +69,7 @@ namespace Project_Agence_Voyage.Managers.Manager_Passanger
             {
                 SqlConnection connection = new SqlConnection(cnStr);
                 SqlCommand cmd = new SqlCommand(
-                    "INSERT INTO [dbo].[Passanger]([id_passanger],[nom],[prenom],[sexe],[date_naissance],[nationalitè],[passport_num],[email],[id_client])   VALUES ()", connection);
+                    "INSERT INTO [dbo].[Passanger]([id_passanger],[nom],[prenom],[sexe],[date_naissance],[nationalitè],[passport_num],[email],[id_client])   VALUES (@id_passanger,@Nom,@prenom,@sexe,@date_naissance,@nationalitè,@passport_num,@email)", connection);
                 cmd.Parameters.AddWithValue("@id_passanger", passanger.id_passanger);
                 cmd.Parameters.AddWithValue("@Nom", passanger.nom);
                 cmd.Parameters.AddWithValue("@prenom", passanger.prenom);
@@ -77,7 +77,7 @@ namespace Project_Agence_Voyage.Managers.Manager_Passanger
                 cmd.Parameters.AddWithValue("@sexe", passanger.sexe);
                 cmd.Parameters.AddWithValue("@nationalitè", passanger.nationalitè);
                 cmd.Parameters.AddWithValue("@email", passanger.email);
-                cmd.Parameters.AddWithValue("@id_clients", passanger.id_client);
+                
                 cmd.Parameters.AddWithValue("@passport_num", passanger.passport_num);
 
                 connection.Open();

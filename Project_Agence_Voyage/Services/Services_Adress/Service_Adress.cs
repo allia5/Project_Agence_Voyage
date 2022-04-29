@@ -16,7 +16,7 @@ namespace Project_Agence_Voyage.Services.Services_Adress
         {
             try
             {
-              return  manager_Adress.Get_Pays();
+              return  manager_Adress.SelectPays();
 
             }catch(Exception E)
             {
@@ -28,7 +28,7 @@ namespace Project_Agence_Voyage.Services.Services_Adress
         {
             try
             {
-                return manager_Adress.Get_Ville(id_pays);
+                return manager_Adress.SelectVille(id_pays);
 
             }
             catch (Exception E)

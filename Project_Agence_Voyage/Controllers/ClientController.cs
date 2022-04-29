@@ -4,6 +4,9 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using Project_Agence_Voyage.Models.Client;
 using Project_Agence_Voyage.Models.Hotel;
+using Project_Agence_Voyage.Models.Login_User;
+using Project_Agence_Voyage.Models.RecherchVille;
+using Project_Agence_Voyage.Models.RecherchVoiture;
 using Project_Agence_Voyage.Models.Registre_Client;
 using Project_Agence_Voyage.Models.Voiture;
 using Project_Agence_Voyage.Models.Vol;
@@ -28,12 +31,12 @@ namespace Project_Agence_Voyage.Controllers
         }
 
         [HttpGet]
-        public IActionResult Recherch_Vol(string id_ville_origin, string id_ville_dist, DateTime Date_Depart, DateTime Date_return)
+        public IActionResult Recherch_Vol([FromQuery] RecherchVol arecherchvol)
         {
             try
             {
                 List<Vol> Vols = new List<Vol>();
-                Vols=service_Client.Recherch_Vol(id_ville_origin,id_ville_dist,Date_Depart,Date_return);
+                Vols=service_Client.Recherch_Vol(arecherchvol);
                 return Ok(Vols);
 
             }catch(Exception e)
@@ -63,12 +66,12 @@ namespace Project_Agence_Voyage.Controllers
         }
 
         [HttpGet, Route("Recherch_voiture")]
-        public IActionResult Recherch_Voiture_Client(string id_ville, DateTime pick_up, DateTime pick_off)
+        public IActionResult Recherch_Voiture_Client(RecherchVoiture arecherchvoiture)
         {
             try
             {
                 List<Voiture> Voiture = new List<Voiture>();
-                Voiture = service_Client.recherch_Voiture(id_ville, pick_up, pick_off);
+                Voiture = service_Client.recherch_Voiture( arecherchvoiture);
                 return Ok(Voiture);
 
             }
@@ -80,10 +83,10 @@ namespace Project_Agence_Voyage.Controllers
         }
         [HttpGet,Route("Login_User")]
         
-        public IActionResult  Login_User(string username, string password)
+        public IActionResult  Login_User(Login_User login_user)
         {
             
-            var user = authonticated(username, password);
+            var user = authonticated(login_user);
             if(user != null)
             {
                 var token = Generitedtoken(user);
@@ -99,8 +102,8 @@ namespace Project_Agence_Voyage.Controllers
             var credential = new SigningCredentials(keysecurity,SecurityAlgorithms.HmacSha256);
             var claim = new[]
             {
-                new Claim(ClaimTypes.NameIdentifier, client.username),
-                 new Claim(ClaimTypes.Email, client.email)
+                new Claim(ClaimTypes.NameIdentifier, client.UserName),
+                 new Claim(ClaimTypes.Email, client.Email)
                  
                    
              };
@@ -108,10 +111,10 @@ namespace Project_Agence_Voyage.Controllers
             return new JwtSecurityTokenHandler().WriteToken(token);
         }
 
-        private Client authonticated(string username, string password)
+        private Client authonticated(Login_User login_user)
         {
            List<Client> Clients = new List<Client>();
-            Clients= service_Client.get_all_client(username,password);
+            Clients= service_Client.get_all_client(login_user);
             // Client client =Clients.FirstOrDefault(o=> o.username==username.ToLower() && o.password.ToLower() == password);
            
             return Clients.First();

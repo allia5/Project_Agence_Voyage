@@ -1,5 +1,6 @@
 ﻿using Project_Agence_Voyage.Models.Client;
 using Project_Agence_Voyage.Models.Hotel;
+using Project_Agence_Voyage.Models.Login_User;
 using Project_Agence_Voyage.Models.Voiture;
 using Project_Agence_Voyage.Models.Vol;
 using System.Data;
@@ -11,12 +12,16 @@ namespace Project_Agence_Voyage.Managers.Manager_Client
     {
         private string cnStr = "Data Source=DESKTOP-2Q0OTRL\\HPSERVER;Initial Catalog=Test;Integrated Security=True";
 
-        public List<Client> Get_All(string Username, String Password)
+        private readonly string selectAllClientsQuery = "SELECT  id_client,username,email,password,Status  FROM Test.dbo.Client where username=@username and password = @password";
+        private readonly string insertClientCommand = 
+            "INSERT INTO dbo.Client(id_client,username,email,password,Status) " +
+            "VALUES (@aId,@aNom,@aEmail,@aPassword,@aStatus)";
+        public List<Client> SelectAllClients(Login_User login_user)
         {
             SqlConnection connection = new SqlConnection(cnStr);
-            SqlCommand cmd = new SqlCommand("SELECT  [id_client],[username],[email],[password],[Status]  FROM [Test].[dbo].[Client] where username=@username and password = @password", connection);
-            cmd.Parameters.AddWithValue("@username", Username);
-            cmd.Parameters.AddWithValue("@password", Password);
+            SqlCommand cmd = new SqlCommand(selectAllClientsQuery, connection);
+            cmd.Parameters.AddWithValue("@username", login_user.username);
+            cmd.Parameters.AddWithValue("@password", login_user.password);
             DataTable dt = new DataTable();
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             connection.Open();
@@ -24,27 +29,21 @@ namespace Project_Agence_Voyage.Managers.Manager_Client
             return dt.ToClients();
         }
 
-        public int Post_client(Client client)
+        public int InsertClient(Client client)
         {
-            try
-            {
                 SqlConnection connection = new SqlConnection(cnStr);
-                SqlCommand cmd = new SqlCommand(
-                    "INSERT INTO [dbo].[Client]([id_client],[username],[email],[password],[Status])     VALUES           (@Id,@Nom,@email,@password,@status)", connection);
-                cmd.Parameters.AddWithValue("@Id", client.id_client);
-                cmd.Parameters.AddWithValue("@Nom", client.username);
-                cmd.Parameters.AddWithValue("@password", client.password);
-                cmd.Parameters.AddWithValue("@email", client.email);
-                cmd.Parameters.AddWithValue("@status", client.Status);
+                SqlCommand cmd = new SqlCommand(insertClientCommand, connection);
+                cmd.Parameters.AddWithValue("@aId", client.Id);
+                cmd.Parameters.AddWithValue("@aNom", client.UserName);
+                cmd.Parameters.AddWithValue("@aPassword", client.Password);
+                cmd.Parameters.AddWithValue("@aEmail", client.Email);
+                cmd.Parameters.AddWithValue("@aStatus", client.Status);
 
                 connection.Open();
                 int insertedRows = cmd.ExecuteNonQuery();
                 return insertedRows;
-            }
-            catch (Exception e)
-            {
-                throw;
-            }
         }
+
+       
     }
 }

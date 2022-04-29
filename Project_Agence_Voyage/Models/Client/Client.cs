@@ -3,20 +3,25 @@
 	using Project_Agence_Voyage.Models.Passanger;
 	public class Client
     {
-		public string id_client { get; set; }
-		public string username { get; set; }
-		public string email { get; set; }
-		public string password { get; set; }
-		public Status Status { get; set; }
-		public List<Passanger> passangers = new List<Passanger>();
+		public string Id { get; set; }
+		public string UserName { get; set; }
+		public string Email { get; set; }
+		public string Password { get; set; }
+		public ClientStatus Status { get; set; }
+		public List<Passanger> Passangers { get; set; }
 
-		public Client(string id_client_, string username_, string email_, string password_)
+        public Client()
+        {
+			Status = ClientStatus.Allowed;
+            Passangers = new List<Passanger>();
+        }
+
+        public Client(string id, string username, string email, string password):this()
 		{
-			this.id_client = id_client_;
-			this.username = username_;
-			this.email = email_;
-			this.password = password_;
-			this.Status = Status.Allowed;
+			this.Id = id;
+			this.UserName = username;
+			this.Email = email;
+			this.Password = password;
 		}
 	}
 }

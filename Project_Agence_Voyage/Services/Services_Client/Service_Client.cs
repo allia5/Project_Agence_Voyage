@@ -4,9 +4,14 @@ using Project_Agence_Voyage.Managers.Manager_Voiture;
 using Project_Agence_Voyage.Managers.Manager_Vol;
 using Project_Agence_Voyage.Models.Client;
 using Project_Agence_Voyage.Models.Hotel;
+using Project_Agence_Voyage.Models.Login_User;
+using Project_Agence_Voyage.Models.RecherchVille;
+using Project_Agence_Voyage.Models.RecherchVoiture;
 using Project_Agence_Voyage.Models.Registre_Client;
 using Project_Agence_Voyage.Models.Voiture;
 using Project_Agence_Voyage.Models.Vol;
+
+
 
 namespace Project_Agence_Voyage.Services.Services_Client
 {
@@ -32,34 +37,38 @@ namespace Project_Agence_Voyage.Services.Services_Client
 
         }
 
-        public List<Client> get_all_client(string Username, String Password)
+        public List<Client> get_all_client(Login_User login_User)
         {
-         return OClient.Get_All(Username,Password);
+         return OClient.SelectAllClients(login_User);
         }
 
         public int post_client(Reg_Client client)
         {
+            string password = client.password;
            
             Validation_Client(client);
             var id = Guid.NewGuid().ToString();
-            Client client_ = new Client(id,client.username,client.email,client.password);
-           return  OClient.Post_client(client_);
+            password=password.Decrypt();
+            Client client_ = new Client(id,client.username,client.email,password);
+           return  OClient.InsertClient(client_);
 
         }
 
-        public List<Voiture> recherch_Voiture(string id_ville, DateTime pick_up, DateTime pick_off)
+        public List<Voiture> recherch_Voiture(RecherchVoiture arecherchvoiture)
         {
-            Validation_Recherch_Voiture(id_ville, pick_up, pick_off);
+            Validation_Recherch_Voiture(arecherchvoiture.id_ville, arecherchvoiture.pick_up, arecherchvoiture.pick_off);
             List<Voiture> List_Voiture = new List<Voiture>();
-            List_Voiture = OVoiture.Select_Voiture( id_ville,  pick_up,  pick_off);
+            List_Voiture = OVoiture.Select_Voiture(arecherchvoiture);
             return List_Voiture;
         }
 
-        public List<Vol> Recherch_Vol(string id_ville_origin, string id_ville_dist, DateTime Date_Depart, DateTime Date_return)
+        
+
+        public List<Vol> Recherch_Vol(RecherchVol arecherchvol)
         {
             List<Vol> Vols = new List<Vol>();
-            Validation_Recherch_Vol(id_ville_origin, id_ville_dist,  Date_Depart, Date_return);
-           Vols= OVol.Select_Vol_Recherch(id_ville_origin, id_ville_dist, Date_Depart, Date_return);
+            Validation_Recherch_Vol(arecherchvol);
+           Vols= OVol.Select_Vol_Recherch(arecherchvol);
             return Vols;
 
         }

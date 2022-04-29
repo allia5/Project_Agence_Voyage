@@ -11,7 +11,14 @@ namespace Project_Agence_Voyage.Services.Validation
                 throw new ArgumentNullException();
             }
         }
-       public static void  Validate_date(DateTime date1, DateTime date2)
+        public static void Validate_enry_date(DateTime value)
+        {
+            if (value.Equals(null))
+            {
+                throw new ArgumentNullException();
+            }
+        }
+        public static void  Validate_date(DateTime date1, DateTime date2)
         {
             int compare = DateTime.Compare(date1, date2);
             if(date1== DateTime.MinValue || date2 == DateTime.MinValue )

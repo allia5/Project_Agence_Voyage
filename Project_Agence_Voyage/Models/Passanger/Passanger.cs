@@ -10,10 +10,10 @@
 		public string nationalitè { get; set; }
 		public string passport_num { get; set; }
 		public string email { get; set; }
-		public string id_client { get; set; }
+		
 		
 
-		public Passanger(string id_passanger_, string nom_, string prenom_, string sexe_, DateTime date_naissance_, string nationalitè_, string passport_num_, string email_, string id_client_)
+		public Passanger(string id_passanger_, string nom_, string prenom_, string sexe_, DateTime date_naissance_, string nationalitè_, string passport_num_, string email_)
 		{
 			this.id_passanger = id_passanger_;
 			this.nom = nom_;
@@ -23,7 +23,7 @@
 			this.nationalitè = nationalitè_;
 			this.passport_num = passport_num_;
 			this.email = email_;
-			this.id_client = id_client_;
+			
 			
 		}
 	}

@@ -1,8 +1,8 @@
 ﻿namespace Project_Agence_Voyage.Models.Client
 {
-    public enum Status
+    public enum ClientStatus
     {
         Allowed = 1,
-        Blocked = 0
+        Blocked = -1
     }
 }
