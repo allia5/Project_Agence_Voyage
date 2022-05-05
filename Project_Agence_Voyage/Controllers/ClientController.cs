@@ -120,6 +120,7 @@ namespace Project_Agence_Voyage.Controllers
             return Clients.First();
         }
         [HttpPost]
+        
         public  IActionResult post_client(Reg_Client client)
         {
              try

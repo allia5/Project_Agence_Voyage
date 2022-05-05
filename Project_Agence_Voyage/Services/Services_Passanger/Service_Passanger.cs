@@ -33,6 +33,7 @@ namespace Project_Agence_Voyage.Services.Services_Passanger
         {
             try
             {
+                passanger.id_passanger = Guid.NewGuid().ToString();
                 Validation_Passanger(passanger);
                 return manager_Passanger.post_passanger(passanger);
             }
