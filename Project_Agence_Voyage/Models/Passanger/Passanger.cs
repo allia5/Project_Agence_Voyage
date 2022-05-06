@@ -1,6 +1,7 @@
 ﻿namespace Project_Agence_Voyage.Models.Passanger
 {
 	using Project_Agence_Voyage.Models.Client;
+    using Project_Agence_Voyage.Models.Resv_Vol;
     using System.Text.Json.Serialization;
 
     public class Passanger
@@ -15,6 +16,7 @@
 		public string email { get; set; }
 		public string? idClient { get; set; }
 		public  Client? Client { get; set; }
+		public List<Resv_vol>? Resv_Vol { get; set; }
 
 		[JsonConstructor]
 		public Passanger() { }

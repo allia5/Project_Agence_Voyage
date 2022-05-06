@@ -1,4 +1,6 @@
-﻿namespace Project_Agence_Voyage.Models.Vol
+﻿using Project_Agence_Voyage.Models.Resv_Vol;
+
+namespace Project_Agence_Voyage.Models.Vol
 {
     public class Vol
     {
@@ -10,7 +12,7 @@
 		public string type { get; set; }
 		public string id_ville_depart { get; set; }
 		public string id_ville_arriver { get; set; }
-
+		public List<Resv_vol>? Resv_Vol { get; set; }
 		public Vol(string id_vol_, DateTime date_depart_, DateTime date_arriver_, int prix_, TimeSpan durè_, string type_, string id_ville_depart_, string id_ville_arriver_)
 		{
 			this.id_vol = id_vol_;
