@@ -4,8 +4,8 @@
 	using Project_Agence_Voyage.Models.Passanger;
 	public class Resv_vol 
     {
-		public string id_Resv_Vol { get; set; }
-		public DateTime date { get; set; }
+		public string? id_Resv_Vol { get; set; }
+		public DateTime? date { get; set; }
 		
 	
 		public string id_vol { get; set; }

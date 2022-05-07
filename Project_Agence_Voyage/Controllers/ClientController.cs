@@ -8,9 +8,11 @@ using Project_Agence_Voyage.Models.Login_User;
 using Project_Agence_Voyage.Models.RecherchVille;
 using Project_Agence_Voyage.Models.RecherchVoiture;
 using Project_Agence_Voyage.Models.Registre_Client;
+using Project_Agence_Voyage.Models.Resv_Vol;
 using Project_Agence_Voyage.Models.Voiture;
 using Project_Agence_Voyage.Models.Vol;
 using Project_Agence_Voyage.Services.Services_Client;
+using Project_Agence_Voyage.Services.ServicesResvVol;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
@@ -24,10 +26,12 @@ namespace Project_Agence_Voyage.Controllers
     {
         private readonly IService_Client service_Client;
         private IConfiguration configuration;
-        public ClientController(IService_Client service_Client, IConfiguration configuration)
+        private readonly IServiceResvVol srevVol;
+        public ClientController(IService_Client service_Client, IConfiguration configuration, IServiceResvVol srevVol)
         {
             this.service_Client = service_Client;
             this.configuration = configuration;
+            this.srevVol = srevVol;
         }
 
         [HttpGet]
@@ -133,6 +137,19 @@ namespace Project_Agence_Voyage.Controllers
               }
             
 
+        }
+        [HttpPost]
+        public IActionResult ReserverVol(Resv_vol reservervol)
+        {
+            try
+            {
+                srevVol.SeviceResvVol(reservervol);
+                return Ok(srevVol);
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
         }
         
         
