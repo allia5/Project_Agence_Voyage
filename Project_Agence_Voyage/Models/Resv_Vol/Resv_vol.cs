@@ -2,7 +2,9 @@
 {
 	using Project_Agence_Voyage.Models.Vol;
 	using Project_Agence_Voyage.Models.Passanger;
-	public class Resv_vol 
+    using System.Text.Json.Serialization;
+
+    public class Resv_vol 
     {
 		public string? id_Resv_Vol { get; set; }
 		public DateTime? date { get; set; }
@@ -13,7 +15,9 @@
 		
 		public Vol? vol { get; set; }
 		public Passanger? passanger { get; set; }
-		
+
+		[JsonConstructor]
+		public Resv_vol() { }
 
 		public Resv_vol(string id_Resv_Vol_, DateTime date_,  string id_vol_, string id_passernger_)
 		{

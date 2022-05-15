@@ -1,7 +1,10 @@
 ﻿namespace Project_Agence_Voyage.Models.Voiture
 {
-    public class Voiture
+	using Project_Agence_Voyage.Models.Ville;
+	using Project_Agence_Voyage.Models.Resv_voiture;
+	public class Voiture
     {
+		
 		public string id_voiture { get; set; }
 		public string name { get; set; }
 		public int kilometrage { get; set; }
@@ -9,7 +12,8 @@
 		public string imagee { get; set; }
 		public int seates { get; set; }
 		public string id_ville { get; set; }
-
+		public Ville? ville { get; set; }
+		public List<Resv_voiture>? ResvVoiture { get; set; }
 		public Voiture(string id_voiture_, string name_, int kilometrage_, int prix_, string imagee_, int seates_ ,string id_ville_)
 		{
 			this.id_voiture = id_voiture_;

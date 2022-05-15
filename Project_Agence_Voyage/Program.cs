@@ -10,6 +10,7 @@ using Project_Agence_Voyage.Managers.ManagersResvVol;
 using Project_Agence_Voyage.Services.Services_Adress;
 using Project_Agence_Voyage.Services.Services_Client;
 using Project_Agence_Voyage.Services.Services_Passanger;
+using Project_Agence_Voyage.Services.ServicesAdmin;
 using Project_Agence_Voyage.Services.ServicesResvVol;
 using System.Text;
 
@@ -32,6 +33,8 @@ builder.Services.AddScoped<IService_Passanger, Service_Passanger>();
 
 builder.Services.AddScoped<IResvVol, ResvVol>();
 builder.Services.AddScoped<IServiceResvVol, ServiceResvVol>();
+
+builder.Services.AddScoped<IServiceAdmin, ServiceAdmin>();
 
 
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(option =>

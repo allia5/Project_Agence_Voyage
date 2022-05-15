@@ -138,13 +138,15 @@ namespace Project_Agence_Voyage.Controllers
             
 
         }
-        [HttpPost]
+
+        [HttpPost, Route("PostReservation")]
+        
         public IActionResult ReserverVol(Resv_vol reservervol)
         {
             try
             {
                 srevVol.SeviceResvVol(reservervol);
-                return Ok(srevVol);
+                return Ok(reservervol);
             }
             catch (Exception e)
             {
