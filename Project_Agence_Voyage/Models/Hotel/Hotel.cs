@@ -2,7 +2,9 @@
 {
 	using Project_Agence_Voyage.Models.Ville;
 	using Project_Agence_Voyage.Models.Resv_hotel;
-	public class Hotel
+    using System.Text.Json.Serialization;
+
+    public class Hotel
     {
 		
 		
@@ -16,6 +18,12 @@
 
 		public Ville? ville_h  { get; set; } 
 		public List<Resv_hotel>? ResvHotel { get; set; }
+
+		[JsonConstructor]
+		public Hotel()
+        {
+
+        }
 
 		public Hotel(string id_hotel_, string name_hotel_, string adress_, int prix_, string imagee_, int nbr_room_, string id_ville_)
 		{

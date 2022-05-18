@@ -3,6 +3,8 @@
 namespace Project_Agence_Voyage.Models.Vol
 {
 	using Project_Agence_Voyage.Models.Ville;
+    using System.Text.Json.Serialization;
+
     public class Vol
     {
 		public string id_vol { get; set; }
@@ -13,8 +15,13 @@ namespace Project_Agence_Voyage.Models.Vol
 		public string type { get; set; }
 		public string id_ville_depart { get; set; }
 		public string id_ville_arriver { get; set; }
-		public Ville? ville { get; set }
+		public Ville? ville { get; set; }
 		public List<Resv_vol>? Resv_Vol { get; set; }
+		[JsonConstructor]
+		public Vol()
+        {
+             
+        }
 		public Vol(string id_vol_, DateTime date_depart_, DateTime date_arriver_, int prix_, TimeSpan durè_, string type_, string id_ville_depart_, string id_ville_arriver_)
 		{
 			this.id_vol = id_vol_;

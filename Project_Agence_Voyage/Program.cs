@@ -6,6 +6,7 @@ using Project_Agence_Voyage.Managers.Manager_Hotel;
 using Project_Agence_Voyage.Managers.Manager_Passanger;
 using Project_Agence_Voyage.Managers.Manager_Voiture;
 using Project_Agence_Voyage.Managers.Manager_Vol;
+using Project_Agence_Voyage.Managers.ManagerAdmin;
 using Project_Agence_Voyage.Managers.ManagersResvVol;
 using Project_Agence_Voyage.Services.Services_Adress;
 using Project_Agence_Voyage.Services.Services_Client;
@@ -35,6 +36,7 @@ builder.Services.AddScoped<IResvVol, ResvVol>();
 builder.Services.AddScoped<IServiceResvVol, ServiceResvVol>();
 
 builder.Services.AddScoped<IServiceAdmin, ServiceAdmin>();
+builder.Services.AddScoped<IManagerAdmin,ManagerAdmin>();
 
 
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(option =>

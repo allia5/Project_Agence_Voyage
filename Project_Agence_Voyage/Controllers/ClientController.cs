@@ -107,7 +107,9 @@ namespace Project_Agence_Voyage.Controllers
             var claim = new[]
             {
                 new Claim(ClaimTypes.NameIdentifier, client.UserName),
-                 new Claim(ClaimTypes.Email, client.Email)
+                 new Claim(ClaimTypes.Email, client.Email),
+                 new Claim(ClaimTypes.Role,"client"),
+                
                  
                    
              };
