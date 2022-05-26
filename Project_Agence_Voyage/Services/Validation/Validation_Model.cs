@@ -38,6 +38,14 @@ namespace Project_Agence_Voyage.Services.Validation
             }
             
         }
+        public static void Valid_Ville(string villeDepart, string villeArivver)
+        {
+            if (String.Equals(villeDepart, villeArivver))
+            {
+                throw new Exception($"ville depart le meme avec ville arriver");
+            }
+
+        }
         public static void ValidateEmailAdresse(string email)
         {
             bool isEmail = Regex.IsMatch(email,

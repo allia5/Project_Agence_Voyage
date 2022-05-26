@@ -9,17 +9,17 @@ namespace Project_Agence_Voyage.Managers.ManagerAdmin
 {
     public class ManagerAdmin : IManagerAdmin
     {
-        private readonly string  insertHotelCommand= "INSERT INTO [dbo].[Hotel]([id_hotel],[name_hotel],[adress],[prix],[imagee],[nbr_room],[id_ville]) VALUES(aId,aNom,@aadress,@prix,@image,@nbr_room,@id_ville)";
+        private readonly string  insertHotelCommand= "INSERT INTO [dbo].[Hotel]([id_hotel],[name_hotel],[adress],[prix],[imagee],[nbr_room],[id_ville]) VALUES(@aId,@aNom,@aadress,@prix,@image,@nbr_room,@id_ville)";
         private string cnStr = "Data Source=DESKTOP-2Q0OTRL\\HPSERVER;Initial Catalog=Test;Integrated Security=True";
         private readonly string insertVolCommand = "INSERT INTO [dbo].[Vol]([id_vol],[date_depart],[date_arriver],[prix],[durè],[type],[id_ville_depart],[id_ville_arriver])  VALUES(@aId,@datedepart,@datearriver,@prix,@dure,@type,@villed,@villea)";
-        private readonly string SelectAdminQUery = "SELECT [Username],[password] FROM [dbo].[Admin]";
+        private readonly string SelectAdminQUery = "SELECT [Username],[password] FROM [dbo].[Admin] where Username=@username and password=@password";
         public int InsertHotel(Hotel hotel)
         {
             SqlConnection connection = new SqlConnection(cnStr);
             SqlCommand cmd = new SqlCommand(insertHotelCommand, connection);
             cmd.Parameters.AddWithValue("@aId", hotel.id_hotel);
             cmd.Parameters.AddWithValue("@aNom", hotel.name_hotel);
-            cmd.Parameters.AddWithValue("@id_ville",hotel.ville_h);
+            cmd.Parameters.AddWithValue("@id_ville",hotel.id_ville);
             cmd.Parameters.AddWithValue("@aadress", hotel.adress);
             cmd.Parameters.AddWithValue("@prix", hotel.prix);
             cmd.Parameters.AddWithValue("@nbr_room", hotel.nbr_room);
@@ -53,11 +53,12 @@ namespace Project_Agence_Voyage.Managers.ManagerAdmin
             return insertedRows;
         }
 
-        public List<Admin> SelectAdmin()
+        public List<Admin> SelectAdmin(Admin admin)
         {
             SqlConnection connection = new SqlConnection(cnStr);
             SqlCommand cmd = new SqlCommand(SelectAdminQUery, connection);
-            
+            cmd.Parameters.AddWithValue("@password", admin.password);
+            cmd.Parameters.AddWithValue("@username", admin.Username);
             DataTable dt = new DataTable();
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             connection.Open();

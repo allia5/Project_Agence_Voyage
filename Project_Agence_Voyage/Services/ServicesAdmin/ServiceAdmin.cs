@@ -13,9 +13,9 @@ namespace Project_Agence_Voyage.Services.ServicesAdmin
             this.manageradmin = manageradmin;
         }
 
-        public List<Admin> GetAdmin()
+        public List<Admin> GetAdmin(Admin admin)
         {
-            return manageradmin.SelectAdmin();
+            return manageradmin.SelectAdmin(admin);
         }
 
         public int ServicePostHotel(Hotel hotel)

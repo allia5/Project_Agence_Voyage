@@ -8,6 +8,6 @@ namespace Project_Agence_Voyage.Services.ServicesAdmin
     {
        public int ServicePostVol(Vol vol);
         public int ServicePostHotel(Hotel hotel);
-        public List<Admin> GetAdmin();
+        public List<Admin> GetAdmin(Admin admin);
     }
 }

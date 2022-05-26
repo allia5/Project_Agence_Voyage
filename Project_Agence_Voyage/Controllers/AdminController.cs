@@ -8,14 +8,17 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 
+
 namespace Project_Agence_Voyage.Controllers
 {
     public class AdminController : Controller
     {
-        private readonly ServiceAdmin adminservice;
-        public AdminController(ServiceAdmin adminservice)
+        private readonly IServiceAdmin adminservice;
+        private IConfiguration configuration;
+        public AdminController(IServiceAdmin adminservice,IConfiguration configuration)
         {
             this.adminservice = adminservice;
+            this.configuration = configuration;
         }
        [HttpPost,Route("PostHotel")]
        public IActionResult PostHotel(Hotel hotel)
@@ -47,7 +50,7 @@ namespace Project_Agence_Voyage.Controllers
         public IActionResult LoginAdmin(Admin admin)
         {
             List<Admin> adminData = new List<Admin>();
-            adminData = adminservice.GetAdmin();
+            adminData = adminservice.GetAdmin(admin);
             if (adminData!=null)
             {
                 var token = Generitedtoken(admin);

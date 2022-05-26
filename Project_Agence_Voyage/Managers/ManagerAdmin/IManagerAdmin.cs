@@ -10,6 +10,6 @@ namespace Project_Agence_Voyage.Managers.ManagerAdmin
         public int InsertHotel(Hotel hotel);
         public int InsertVol(Vol vol);
         public int InsertVoiture(Voiture voiture);
-        public List<Admin> SelectAdmin();
+        public List<Admin> SelectAdmin(Admin admin);
     }
 }

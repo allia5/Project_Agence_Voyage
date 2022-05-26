@@ -29,7 +29,7 @@ namespace Project_Agence_Voyage.Services.ServicesAdmin
         Validate_enry_date(vol.date_arriver);
         Validate_enry_date(vol.date_depart);
         Validate_date(vol.date_depart,vol.date_arriver);
-        Valid_sym(vol.id_ville_arriver,vol.id_ville_depart);
+        Valid_Ville(vol.id_ville_arriver,vol.id_ville_depart);
     }
     }
 }
