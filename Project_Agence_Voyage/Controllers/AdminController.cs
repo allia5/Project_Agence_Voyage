@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using Project_Agence_Voyage.Models.Admin;
 using Project_Agence_Voyage.Models.Hotel;
@@ -21,7 +22,8 @@ namespace Project_Agence_Voyage.Controllers
             this.configuration = configuration;
         }
        [HttpPost,Route("PostHotel")]
-       public IActionResult PostHotel(Hotel hotel)
+        [Authorize(Roles = "Admin")]
+        public IActionResult PostHotel(Hotel hotel)
         {
             try
             {
@@ -33,6 +35,7 @@ namespace Project_Agence_Voyage.Controllers
             }
         }
         [HttpPost, Route("PostVol")]
+       [Authorize(Roles ="Admin")]
         public IActionResult PostVol(Vol vol)
         {
             try
@@ -47,11 +50,11 @@ namespace Project_Agence_Voyage.Controllers
 
         }
         [HttpGet,Route("GetToKen")]
-        public IActionResult LoginAdmin(Admin admin)
+        public IActionResult LoginAdmin([FromBody] Admin admin)
         {
             List<Admin> adminData = new List<Admin>();
             adminData = adminservice.GetAdmin(admin);
-            if (adminData!=null)
+            if (adminData.Count()!=0)
             {
                 var token = Generitedtoken(admin);
                 return Ok(token);

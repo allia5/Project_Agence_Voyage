@@ -9,12 +9,8 @@ namespace Project_Agence_Voyage.Models.Admin
             if (row is null)
                 return null;
 
-            return new Admin
-            {
-                Username  = (string)row["Username"],
-               password = (string)row["password"],
-               
-            };
+            return new Admin((string)row["Username"], (string)row["password"]);
+           
         }
 
         public static List<Admin> ToAdmin(this DataTable table)
